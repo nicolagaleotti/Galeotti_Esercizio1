@@ -11,12 +11,25 @@ namespace Galeotti_Esercizio1
     {
         static void Main(string[] args)
         {
-            Thread thread = new Thread(StampaNumeriPari);
+            Thread thread = new Thread(() => StampaNumeri(true));
             thread.Start();
 
-            StampaNumeriDispari();
+            StampaNumeri(false);
 
             Console.ReadLine();
+        }
+
+        public static void StampaNumeri(bool pari)
+        {
+            Console.WriteLine("ID Thread: " + Thread.CurrentThread.ManagedThreadId);
+            if (pari == true)
+            {
+                StampaNumeriPari();
+            }
+            else
+            {
+                StampaNumeriDispari();
+            }
         }
 
         public static void StampaNumeriPari()
